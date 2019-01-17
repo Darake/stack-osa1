@@ -7,21 +7,30 @@ const Header = ({text}) => (
   </div>
 )
 
-const Part = ({text, amount}) => (<><p>{text} {amount}</p></>)
-
 const Button = ({handleClick, text}) => (
   <button onClick={handleClick}>
     {text}
   </button>
 )
 
-const Content = ({feedback}) => (
-  <div>
-    <Part text={feedback[0].text} amount={feedback[0].amount} />
-    <Part text={feedback[1].text} amount={feedback[1].amount} />
-    <Part text={feedback[2].text} amount={feedback[2].amount} />
-  </div>
-)
+const Content = ({feedback}) => {
+  const total = feedback[0].amount + feedback[1].amount + feedback[2].amount
+  const median = (feedback[0].amount * 1 + feedback[2].amount * (-1)) / total
+  const positive = 100 * (feedback[0].amount / total)
+
+  return (
+    <div>
+      <p>
+        {feedback[0].text} {feedback[0].amount} <br />
+        {feedback[1].text} {feedback[1].amount} <br />
+        {feedback[2].text} {feedback[2].amount} <br />
+        yhteensä {total} <br />
+        keskiarvo {median} <br />
+        positiivisia {positive} % <br />
+      </p>
+    </div>
+  )
+}
 
 const Statistics = ({headline, feedback}) => (
   <div>
