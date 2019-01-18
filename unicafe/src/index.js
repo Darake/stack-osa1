@@ -13,31 +13,25 @@ const Button = ({handleClick, text}) => (
   </button>
 )
 
-const Content = ({feedback}) => {
+const Statistics = ({headline, feedback}) => {
   const total = feedback[0].amount + feedback[1].amount + feedback[2].amount
   const median = (feedback[0].amount * 1 + feedback[2].amount * (-1)) / total
   const positive = 100 * (feedback[0].amount / total)
 
   return (
-    <div>
-      <p>
-        {feedback[0].text} {feedback[0].amount} <br />
-        {feedback[1].text} {feedback[1].amount} <br />
-        {feedback[2].text} {feedback[2].amount} <br />
-        yhteensä {total} <br />
-        keskiarvo {median} <br />
-        positiivisia {positive} % <br />
-      </p>
-    </div>
-  )
-}
-
-const Statistics = ({headline, feedback}) => (
   <div>
     <Header text={headline} />
-    <Content feedback={feedback} />
+    <p>
+      {feedback[0].text} {feedback[0].amount} <br />
+      {feedback[1].text} {feedback[1].amount} <br />
+      {feedback[2].text} {feedback[2].amount} <br />
+      yhteensä {total} <br />
+      keskiarvo {median} <br />
+      positiivisia {positive} % <br />
+    </p>
   </div>
-)
+ )
+}
 
 const Feedback = ({text, feedback}) => (
   <div>
