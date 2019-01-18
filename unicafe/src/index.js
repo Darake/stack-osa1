@@ -18,6 +18,15 @@ const Statistics = ({headline, feedback}) => {
   const median = (feedback[0].amount * 1 + feedback[2].amount * (-1)) / total
   const positive = 100 * (feedback[0].amount / total)
 
+  if (total === 0) {
+    return (
+      <div>
+        <Header text={headline} />
+        <p>Ei yhtään palatetta annettu</p>
+      </div>
+    )
+  }
+
   return (
   <div>
     <Header text={headline} />
