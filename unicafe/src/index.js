@@ -13,7 +13,14 @@ const Button = ({handleClick, text}) => (
   </button>
 )
 
-const Statistic = ({text, value}) => <p>{text} {value}</p>
+const Statistic = ({text, value}) => (
+  <tbody>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
+  </tbody>
+)
 
 const Statistics = ({headline, feedback}) => {
   const total = feedback[0].amount + feedback[1].amount + feedback[2].amount
@@ -32,12 +39,14 @@ const Statistics = ({headline, feedback}) => {
   return (
   <div>
     <Header text={headline} />
-    <Statistic text={feedback[0].text} value={feedback[0].amount} />
-    <Statistic text={feedback[1].text} value={feedback[2].amount} />
-    <Statistic text={feedback[2].text} value={feedback[2].amount} />
-    <Statistic text='yhteensä' value={total} />
-    <Statistic text='keskiarvo' value={median} />
-    <Statistic text='positiivisia' value={positive} />
+    <table>
+      <Statistic text={feedback[0].text} value={feedback[0].amount} />
+      <Statistic text={feedback[1].text} value={feedback[2].amount} />
+      <Statistic text={feedback[2].text} value={feedback[2].amount} />
+      <Statistic text='yhteensä' value={total} />
+      <Statistic text='keskiarvo' value={median} />
+      <Statistic text='positiivisia' value={positive} />
+    </table>
   </div>
  )
 }
